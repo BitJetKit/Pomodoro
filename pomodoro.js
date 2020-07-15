@@ -8,6 +8,19 @@ const startButton = document.querySelector('#pomodoro-start');
 const pauseButton = document.querySelector('#pomodoro-pause');
 const stopButton = document.querySelector('#pomodoro-stop');
 
+// I want this: it shall allow playing or pausing
+// the timer.
+let isClockRunning = false;
+
+// This is the pomodoro limit I am setting.
+// originally, 
+// in seconds = 30 minutes
+let workSessionDuration = 1800;
+let currentTimeLeftInSession = 1800;
+
+// in seconds = 5 mins;
+let breakSessionDuration = 300;
+
 // START
 startButton.addEventListener('click', () => {
   toggleClock();
