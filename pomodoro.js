@@ -42,14 +42,14 @@ const toggleClock = (reset) => {
     // display this fake pomodoro's remaining timer
     clockTimer = setInterval(() => {
       currentTimeLeftInSession--;
+
       displayCurrentTimeLeftInSession();
     }, 1000)
-   }
- }
-}
-
-
-
+        }
+      }
+    }
+  }
+  
 // START
 startButton.addEventListener('click', () => {
   toggleClock();
