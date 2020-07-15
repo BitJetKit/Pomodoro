@@ -39,7 +39,10 @@ const toggleClock = (reset) => {
      clockTimer = setInterval(() => {
     // decrease time left / increase time spent
     currentTimeLeftInSession--;
-    
+    // display this fake pomodoro's remaining timer
+    clockTimer = setInterval(() => {
+      currentTimeLeftInSession--;
+      displayCurrentTimeLeftInSession();
     }, 1000)
    }
  }
