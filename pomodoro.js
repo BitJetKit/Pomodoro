@@ -13,13 +13,39 @@ const stopButton = document.querySelector('#pomodoro-stop');
 let isClockRunning = false;
 
 // This is the pomodoro limit I am setting.
-// originally, 
+// originally,
 // in seconds = 30 minutes
 let workSessionDuration = 1800;
 let currentTimeLeftInSession = 1800;
 
 // in seconds = 5 mins;
 let breakSessionDuration = 300;
+
+// For stopping the timer, toggleClock receives reset,
+// and isClockRunning is evaluated against playing or pausing
+// the timer.
+const toggleClock = (reset) => {
+ if (reset) {
+   // STOP THE TIMER
+ } else {
+   if (isClockRunning === true) {
+     // PAUSE THE TIMER
+     clearInterval(clockTimer);
+     isClockRunning = false;
+   } else {
+     // START THE TIMER
+     isClockRunning = true;
+     // Track my timer.
+     clockTimer = setInterval(() => {
+    // decrease time left / increase time spent
+    currentTimeLeftInSession--;
+    
+    }, 1000)
+   }
+ }
+}
+
+
 
 // START
 startButton.addEventListener('click', () => {
