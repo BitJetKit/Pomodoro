@@ -49,7 +49,29 @@ const toggleClock = (reset) => {
       }
     }
   }
-  
+  // Format the seconds into minutes and seconds
+  const displayCurrentTimeLeftInSession = () => {
+    const secondsLeft = currentTimeLeftInSession;
+    let result = '';
+    const seconds = secondsLeft % 60;
+    // Parse the seconds to minutes and seconds right here
+    const minutes = parseInt(secondsLeft / 60) % 60;
+    // This is optional: Counting the hours.
+    let hours = parseInt(secondsLeft / 3600);
+    // add leading zeroes if it's less than 10
+    function addLeadingZeroes(time) {
+      // If the time is less than ten, return time,
+      // or else return the greater than ten value.
+      return time < 10 ? `0${time}` : time
+    } // With hours, this is optional, but not without hours.
+      // Interpolate hours. Then, interpolate The
+      // minutes and seconds: this is a summation.
+    if (hours > 0) result += `${hours}:`
+    result += `${addLeadingZeroes(minutes)}:${addLeadingZeroes(seconds)}`
+    // Add the result to the page.
+    pomodoroTimer.innerText = result.toString();
+  }
+
 // START
 startButton.addEventListener('click', () => {
   toggleClock();
